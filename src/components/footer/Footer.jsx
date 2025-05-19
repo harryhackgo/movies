@@ -16,7 +16,7 @@ import facebookLine from "@/assets/facebook-circle-line.png";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="pb-10">
       <div className="container mx-auto p-[30px] grid grid-cols-1  gap-8 rounded-[12px] bg-content text-text text-[16px] leading-5 lg:grid-cols-4 md:grid-cols-2 ">
         <div>
           <img src={logo} alt="" className="pb-[48px]" />

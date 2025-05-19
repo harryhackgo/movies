@@ -1,7 +1,7 @@
 import { api } from "@/api";
 import { useState, useEffect } from "react";
 
-export const useFetch = (endpoint) => {
+export const useFetch = (endpoint, params = {}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -9,14 +9,13 @@ export const useFetch = (endpoint) => {
   useEffect(() => {
     setLoading(true);
     api
-      .get(endpoint)
-      .then((res) => {
-        console.log(res);
-        setData(res.data);
+      .get(endpoint, {
+        params,
       })
+      .then((res) => setData(res.data))
       .catch((err) => setError(err.response.data))
       .finally(() => setLoading(false));
-  }, [endpoint]);
+  }, [endpoint, JSON.stringify(params)]);
 
   return { data, error, loading };
 };

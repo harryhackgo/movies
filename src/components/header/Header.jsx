@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import logo from "@/assets/LOGOTYPE–MOVIE.svg";
-import afisha from "@/assets/tv-2-fill.png";
-import seansi from "@/assets/tablet-line.png";
-import tickets from "@/assets/coupon-3-line.png";
-import search from "@/assets/search-line.png";
-import darktheme from "@/assets/dark_theme.png";
 import menu from "@/assets/icons8-menu.svg";
+import { NavLink } from "react-router-dom";
+import { RiHomeLine } from "react-icons/ri";
+import { MdOutlineLocalMovies } from "react-icons/md";
+import { IoBookmarkOutline } from "react-icons/io5";
+import { FiSearch } from "react-icons/fi";
+import { MdDarkMode } from "react-icons/md";
+import "./style.css";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState("");
@@ -14,36 +16,42 @@ const Header = () => {
     <header>
       <div className="container mx-auto">
         <nav className="min-h-20 flex items-center justify-between">
-          <img src={logo} alt="logo of the website" />
-          <ul className=" grid-cols-4 hidden md:grid">
-            <li className="w-20">
-              <a href="#" className="flex flex-col items-center gap-1.5">
-                <img src={afisha} alt="" />
-                <span className="text-[#C61F1F]">Afisha</span>
-              </a>
-            </li>
-            <li className="w-20">
-              <a href="#" className="flex flex-col items-center gap-1.5">
-                <img src={seansi} alt="" />
-                <span className="text-[#a1a1a1]">Seanses</span>
-              </a>
-            </li>
-            <li className="w-20">
-              <a href="#" className="flex flex-col items-center gap-1.5">
-                <img src={tickets} alt="" />
-                <span className="text-[#a1a1a1]">Tickets</span>
-              </a>
-            </li>
-            <li className="w-20">
-              <a href="#" className="flex flex-col items-center gap-1.5">
-                <img src={search} alt="" />
-                <span className="text-[#a1a1a1]">Search</span>
-              </a>
-            </li>
-          </ul>
+          <NavLink to={"/"}>
+            <img src={logo} alt="logo of the website" />
+          </NavLink>
+          <div className="flex gap-10">
+            <NavLink
+              className={"flex flex-col items-center  text-text header-link"}
+              to={"/"}
+            >
+              <RiHomeLine className="text-2xl" />
+              <span>Home</span>
+            </NavLink>
+            <NavLink
+              className={"flex flex-col items-center  text-text header-link"}
+              to={"/movies"}
+            >
+              <MdOutlineLocalMovies className="text-2xl" />
+              <span>Movies</span>
+            </NavLink>
+            <NavLink
+              className={"flex flex-col text-text items-center header-link"}
+              to={"/saved"}
+            >
+              <IoBookmarkOutline className="text-2xl" />
+              <span>Saved</span>
+            </NavLink>
+            <NavLink
+              className={"flex flex-col text-text items-center header-link"}
+              to={"/search"}
+            >
+              <FiSearch className="text-2xl" />
+              <span>Search</span>
+            </NavLink>
+          </div>
           <div className="flex items-center gap-5 ">
-            <button className="cursor-pointer rounded-2xl overflow-hidden">
-              <img src={darktheme} alt="" className="w-10" />
+            <button className="cursor-pointer rounded-2xl overflow-hidden text-primary text-2xl">
+              <MdDarkMode />
             </button>
             <button className="bg-primary w-[180px] h-[56px] text-center text-white rounded-[12px] cursor-pointer">
               Sing In

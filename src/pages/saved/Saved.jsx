@@ -1,7 +1,14 @@
-import React from "react";
+import MovieView from "../../components/movie-view/MovieView";
+import { useStateValue } from "../../context/mainContext";
 
 const Saved = () => {
-  return <div>Saved</div>;
+  const [state] = useStateValue();
+  console.log(state.saved);
+  return (
+    <div>
+      <MovieView data={state.saved} />
+    </div>
+  );
 };
 
 export default Saved;
